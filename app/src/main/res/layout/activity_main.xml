@@ -32,20 +32,36 @@
             android:src="@mipmap/ic_launcher"/>
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:id="@+id/btSalvar"
+        android:onClick="salvar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nova Nota"
+        android:id="@+id/btLimpar"
+        android:onClick="limpar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="Digite sua anotacao"
         android:id="@+id/etTexto"
         android:gravity="top"
-        android:layout_below="@+id/header"
-        android:layout_above="@+id/btSalvar"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar"
-        android:id="@+id/btSalvar"
-        android:onClick="salvar"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
 </RelativeLayout>

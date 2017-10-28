@@ -1,5 +1,7 @@
 package com.example.logonrm.notepadshiftapp;
 
+import android.app.ProgressDialog;
+import android.media.MediaDrm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         api.buscarNota(etTitulo.getText().toString()).enqueue(new Callback<Nota>() {
             @Override
             public void onResponse(Call<Nota> call, Response<Nota> response) {
-                etTexto.setText(response.body().getDescricao());
+                if(response.isSuccessful())
+                    etTexto.setText(response.body().getDescricao());
             }
 
             @Override
@@ -62,7 +65,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void salvar(View view){
-        NotaAPI api = getRetrofit().create(NotaAPI.class);
+        final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "", "Dados sendo processados...", true);
+        dialog.show();
 
+        NotaAPI api = getRetrofit().create(NotaAPI.class);
+        Nota nota = new Nota(etTitulo.getText().toString(), etTexto.getText().toString());
+
+        api.salvar(nota).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(MainActivity.this, "Gravado com sucesso!", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(MainActivity.this, "Deu problema!", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void limpar(View view){
+        etTitulo.setText("");
+        etTexto.setText("");
     }
 }

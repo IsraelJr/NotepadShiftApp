@@ -4,6 +4,10 @@ package com.example.logonrm.notepadshiftapp.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Nota {
+    public Nota(String titulo, String descricao) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }
 
     private String id;
     private String titulo;
