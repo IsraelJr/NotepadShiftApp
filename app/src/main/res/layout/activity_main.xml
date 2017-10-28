@@ -25,6 +25,7 @@
             android:layout_weight="1"/>
 
         <ImageButton
+            android:onClick="pesquisar"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_weight="0"
@@ -45,5 +46,6 @@
         android:layout_height="wrap_content"
         android:text="Salvar"
         android:id="@+id/btSalvar"
+        android:onClick="salvar"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>
